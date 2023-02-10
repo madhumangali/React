@@ -1,1 +1,264 @@
+React :-
+--------
+React is an opensorce library of javascript for building user interfaces.
+it is a not framework.
+react focuses on building UI,it not focuses http req,routing ...etc.
+it is used to develop web applications.
 
+why we need to learn ract ?
+----------------------------
+Create and Maintained by facebook.
+High communtiy.
+
+Component Based Architecture :-
+---------------------------------
+it is same as microservice in java , break the project in to samll encapsulated parts, by this we can build complex ui easily.
+Reusable code.
+React is declarative -
+1. Tell React what you want and react will build the actual ui.
+2.React will handle efficently updating and rendering of the componets.
+3.Dom Updates are handles gracefully in react.
+Seamlessly integrate react into any of your applications.
+Portion of your page or a complete page or even an entire application itself can fit
+React native for mobile applications.
+
+Prerequisites :-
+------------------
+HTML, CSS and JavaScript fundamentals
+ES6
+JavaScript - 'this' keyword, filter, map and reduce
+ES6 - let & const, arrow functions, template literals, default parameters, object literals, rest and
+spread operators and destructuring assignment.
+React from scratch.
+
+Pacakge Structure 
+we need node and vscode id .
+
+components :-
+--------------
+we can many no of componets in react as per for requirement.
+component code file should be saved with (.js) extension.
+
+Component Types :-
+-----------------
+1. Stateless Functional Component          2. Stateful Class Component
+
+JavaScript Functions                         Class extending Component class
+                                               Render method returning HTML
+                                              class Welcome extends React.Component {
+function Welcome (props) {                             render() {
+return <h1>Hello, {props.name}</h1>;              return <h1>Hello, {this.props.name}</h1>;
+                                                 }
+                                                 }
+}
+
+Components Summary :-
+----------------------
+Components describe a part of the user interface
+They are re-usable and can be nested inside other components
+Two Types -
+• Stateless Functional Components
+• Stateful Class Components
+
+Functional components :-
+------------------------
+properties (props) -> JavaScript Function -> Html (JSX)
+export statement is necessary whenever we need use components in another components.
+export default statement -> we can write reference variable name as we wish.
+export statement -> here we need write reference variable name as it is as component name
+
+Class components :-
+--------------------
+class components is also one of the components same as Funtional components.
+
+Functional vs Class components :-
+----------------------------------
+Simple functions                               More feature rich
+Use Func components as much as possible        Maintain their own private data - state
+Absence of 'this' keyword                      Complex Ul logic
+Solution without using state                   Provide lifecycle hooks                            
+Mainly responsible for the UI                  Stateful/ smart/ container
+Stateless/ Dumb/ Presentational
+
+Hooks :-
+-------------
+
+No breaking changes.
+Completely opt-in & 100% backwards-compatible.
+What ever we've learned so far in this series still holds good.
+Component types - Functional components and Class components.
+Using state, lifecycle methods and 'this' binding.
+After understanding state, event binding and lifecycle hooks in class components.
+
+JSX  :-
+------------
+
+JavaScript XML (JSX) - Extension to the JavaScript language syntax.
+Write XML-like code for elements and components.
+JSX tags have a tag name, attributes, and children.
+JSX is not a necessity to write React applications.
+JSX makes your react code simpler and elegant.
+JSX ultimately transpiles to pure JavaScript which is understood by the browsers.
+
+JSX differences :-
+-------------------
+
+Class -> className
+for -> htmlFor
+camelCase property naming convention
+onclick -> onClick
+tabindex -> tabindex
+
+Props vs State :-
+---------------------
+Props and state are used to hold the information that influence the UI in the browser .
+
+props                                     state
+-------                                   ------
+props get passed to the component         state is managed within the component
+Function parameters                       Variables declared in the function body
+props are immutable                       state can be changed
+props Functional Components               useState Hook - Functional Components
+this.props - Class Components             this.state - Class Components
+
+state :- 
+-------
+state is nothing but an object privately maintained inside a component.
+state can changed with in the component using setstate().
+
+setState() :-
+----------------
+setState method has 2 parameters first param is object and the second param is callback method.
+if we write any console statement after the setState it excutes first like asynchronus call.
+Always make use of setState and never modify the state directly.
+Code has to be executed after the state has been updated ? Place that code in the call back function which is the second argument to the setState method.
+When you have to update state based on the previous state value, pass in a function as anargument instead of the regular object.
+
+Destructing of props and State :-
+-----------------------------------
+this concept is used increase the readability of the code.
+
+Binding of Events :-
+-----------------------
+This keyword is undefined in eventhandlers , so binding is necessary.
+
+Conditional Rendering :-
+----------------------------
+1. if/else
+2. Element variables
+3. Ternary conditional operator
+4. Short circuit operator
+
+Lists and Keys :-
+---------------------
+A "key" is a special string attribute you need to include when creating lists of elements.
+Keys give the elements a stable identity.
+Keys help React identify which items have changed, are added, or are removed.
+Help in efficient update of the user interface.
+
+Index as key :-
+-----------------
+When to use index as a key?
+1. The items in your list do not have a unique id.
+2. The list is a static list and will not change.
+3. The list will never be reordered or filtered.
+
+ Styling React Components :-
+ -------------------------
+ 1. CSS stylesheets
+ 2. Inline styling
+ 3. CSS Modules
+ 4. CSS in JS Libaries (Styled Components)
+ 
+ Lifecycle Methods :-
+------------------------
+There are 4 lifecycle Methods 
+1. Mounting --> When an instance of a component is being created and inserted into the DOM
+2. Updating --> When a component is being re-rendered as a result of changes to either its props or state
+3. Unmounting --> When a component is being removed from the DOM
+4. Error Handling --> When there is an error during rendering, in a lifecycle method,or in the constructor of any child component
+
+Mounting Lifcycle Methods :-
+------------------------------
+1. Constructor(props) --> A special function that will get called whenever a new component is created.
+                          Initializing state
+                          Binding the event handlers
+                          Do not cause side effects. Ex: HTTP requests
+                          super(props)
+                          Directly overwrite this.state
+
+2. static getDerivedStateFromProps(props, state) --> When the state of the component depends on changes in props over time.
+                                                     Set the state
+                                                     Do not cause side effects. Ex: HTTP requests
+
+3. render() --> Only required method
+                Read props & state and return JSX
+                Do not change state or interact with DOM or make ajax calls.
+
+4. componetDidMount() --> Invoked immediately after a component and all its children components have been rendered to the DOM.
+                          Cause side effects. Ex: Interact with the DOM or perform any ajax calls to load data.
+
+order of execution :- constructor -> getDerivedStateFromProps -> render -> componetDidMount
+
+Updating Lifecycle Methods :-
+---------------------------------
+1. static getDerivedStateFromProps(props, state) --> When the state of the component depends on changes in props over time.
+                                                     Set the state
+                                                     Do not cause side effects. Ex: HTTP requests
+
+2. shouldComponentUpdate( nextProps, nextState) --> Dictates if the component should re-render or not
+      (rarely used)                                 Performance optimization
+                                                    Do not cause side effects. Ex: HTTP requests Calling the setState method
+
+3. render() --> Only required method
+                Read props & state and return JSX
+                Do not change state or interact with DOM or make ajax calls.
+
+4. getSnapshotBeforeUpdate(prevProps,prevState) --> Called right before the changes from the virtual DOM are to be reflected in the DOM
+    (rarely used)                                   Capture some information from the DOM
+                                                    Method will either return null or return a value.
+                                                    Returned value will be passed as the third parameter to the next method.
+
+5. componentDidUpdate(prevProps,prevState,snapshot) --> Called after the render is finished in the re-render cycles
+                                                        Cause side effects
+
+Fragments :-
+-----------------
+Fragements are used to return the different elements at a time .
+Tag - <React.Fragment> </React.Fragment> , <> </>
+Pure Component :-
+---------------
+
+Regular Component                                Pure Component
+
+A regular component does not implement the       A pure component on the other hand
+shouldComponentUpdate method. It always          implements shouldComponentUpdate with
+returns true by default.                         a shallow props and state comparison.
+Shallow comparison (SC):-
+------------------------
+Primitive Types
+a (SC) b returns true if a and b have the same value and are of the same type
+
+Ex: string ‘Vishwas’ (SC) string ‘Vishwas’ returns true
+
+Complex Types
+
+a (SC) b returns true if a and b reference the exact same object.
+
+Pure Component :-
+--------------------
+A pure component implmements shouldComponentUpdate with a shallow prop and state
+comparison.
+
+SC of prevState with currentState --------> Difference ?
+SC of prevProps with currentProps --------> Re-render component
+
+We can create a component by extending the PureComponent class.
+A PureComponent implements the shouldComponentUpdate lifecycle method by performing a shallow comparison on the props and state of the component.
+If there is no difference, the component is not re-rendered — performance boost.
+It is a good idea to ensure that all the children components are also pure to avoid unexpected behaviour.
+Never mutate the state. Always return a new object that reflects the new state.
+Memo Component :-
+------------------
+Memo component is same as pure component but it is used for functions.
+this component is used to increase performance when required rendering.
