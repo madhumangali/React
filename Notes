@@ -1,0 +1,4 @@
+Event handling
+
+Event handling in React involves responding to user interactions, such as clicks, form submissions, and keyboard inputs. 
+React implements a synthetic event system, which is a cross-browser wrapper around native browser events, ensuring consistent behavior across different browsers.
