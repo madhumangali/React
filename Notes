@@ -2,3 +2,260 @@ Event handling
 
 Event handling in React involves responding to user interactions, such as clicks, form submissions, and keyboard inputs. 
 React implements a synthetic event system, which is a cross-browser wrapper around native browser events, ensuring consistent behavior across different browsers.
+
+Class components example :-
+
+class OnClick extends Component {
+
+    onClickHandling(){
+        console.log("Button clicked Here");
+    }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.onClickHandling}>click here</button>
+      </div>
+    )
+  }
+
+}
+
+Function Component Example :-
+
+function FunctionClick() {
+
+    function clickHandling(){
+      console.log("button clicked");
+    }
+
+  
+    return (
+      <div>
+        <button onClick={clickHandling}>click</button>
+      </div>
+    )
+
+
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Event binding in React involves connecting event handlers to specific events triggered by user interactions, such as clicks, input changes, or form submissions.
+
+Event binding can be done in 4 ways.
+
+1. Using bind method in render method.
+2. using arrow functions in render method.
+
+class EventBind extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            message : "Hello"
+        }
+    }
+
+    clickHandling(){
+
+        this.setState({
+            message : "Good Bye!"
+        });
+        
+        console.log("Button clicked");
+    }
+
+    render(){
+
+        return (
+            <div> 
+                <span>{this.state.message}</span> <br/>
+                <button onClick = {this.clickHandling.bind(this)}>click</button>
+                <button onClick = { () => this.clickHandling()}>click</button> // 2. using arrow functions in render method.
+            </div>
+        );
+
+    }
+
+}
+
+3. binding in the class constructor
+
+class EventBind extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            message : "Hello"
+        }
+
+        this.clickHandling = this.clickHandling.bind(this);
+    }
+
+    clickHandling(){
+            this.setState({
+                message : "Good Bye!"
+            });
+            console.log("Button clicked");
+    }
+
+    render(){
+        return (
+            <div> 
+                <span>{this.state.message}</span> <br/>
+                <button onClick = {this.clickHandling}>click</button>
+            </div>
+        );
+    }
+
+}
+
+4. class Property has arrow functions
+
+class EventBind extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            message : "Hello"
+        }
+    }
+
+    clickHandling = () => {
+        this.setState({
+            message : "Good Bye!"
+        })
+    }
+
+    render(){
+        return (
+            <div> 
+                <span>{this.state.message}</span> <br/>
+                <button onClick = {this.clickHandling}>click</button>
+            </div>
+        );
+    }
+
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Passing Methods as Props in React
+(aka "function props" or "callback props")
+
+This is a very common React pattern used when a child component needs to trigger a function defined in the parent — like lifting state or sending data/events upward.
+
+Passing ParentComponent props in ChildComponent 
+
+class ParentComponent extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            parent: 'ParentCompent'
+        }
+    }
+
+    greetParent = () => {
+        alert(`Hello ${this.state.parent}`)
+    }
+
+  render(){
+    return (
+        <div>
+            <ChildComponent greetHandler = {this.greetParent}/>
+        </div>
+    )
+  }
+
+}
+
+function ChildComponent(props){
+
+    return(
+        <div> 
+            <button onClick = {props.greetHandler}>click</button>
+        </div>
+    )
+
+}
+
+App.js => ParentComponent
+
+-------------------------
+Passing ChildComponent props in ParentComponent
+
+greetParent = (child) => {
+        alert(`Hello ${this.state.parent} from ${child}`)
+}
+
+function ChildComponent(props){
+    return(
+        <div> 
+            <button onClick = {() => props.greetHandler('ChildComponent')}>click</button>
+        </div>
+    )
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Conditional Rendering using Conditional Operators
+
+class UserGreetings extends Component {
+
+    constructor(){
+        super();
+
+        this.state = {
+            isLoggedIn : true
+        }
+    }
+
+    render(){
+
+        // Logical And (&&)
+         return this.state.isLoggedIn && <div> Welcome Madhu</div>\
+
+        // Logical Or (||)
+         return this.state.isLoggedIn || <div> Welcome Madhu</div>
+
+        // Ternary Operator
+         return this.isLoggedIn ? ( <div> Welcome Madhu</div> ) : ( <div>Welcome Guest</div> )
+
+        // if-else
+
+            // if(this.state.isLoggedIn) {
+            //     return <div> Welcome Madhu</div>;
+            // } else
+            //     return <div> Welcome Guest</div>;
+
+        // Switch case
+
+        switch(this.state.isLoggedIn){
+            case true:
+                return <div> Welcome Madhu</div>;
+            default:
+                return <div> Welcome Guest</div>;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
